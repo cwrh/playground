@@ -1,0 +1,8 @@
+### Sass ###
+.sass-cache/
+*.css.map
+### Font Files ###
+*.woff
+*.woff2
+### SVG Files ###
+*.svg

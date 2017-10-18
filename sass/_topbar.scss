@@ -1,0 +1,25 @@
+#topbar {
+	background: $black-cold;
+	color: $white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: .375rem .25rem .25rem;
+	z-index: 101;
+	box-shadow: 2px 0 15px rgba(0, 0, 0, .35);
+}
+
+.topbar-title-wrapper {
+	display: inline-block;
+
+	div {
+		display: block;
+		width: 0;
+
+		span {
+			font-size: 2rem;
+			font-family: $AlegreyaSC;
+		}
+	}
+}

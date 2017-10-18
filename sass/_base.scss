@@ -1,0 +1,76 @@
+/* *** Colors *************** */
+$white: hsl(0, 0, 97%);
+$white-muted: hsl(0, 5%, 93%);
+$black-cold: hsl(200, 45%, 6%);
+$black: hsl(10, 20%, 2%);
+/* *** @Font-Face Declarations *********** */
+@font-face {
+	font-family: 'Open Sans';
+	src: url('fonts/OpenSans-Regular.woff2') format('woff2'), url('fonts/OpenSans-Regular.woff') format('woff');
+}
+@font-face {
+	font-family: 'Open Sans Light';
+	src: url('fonts/OpenSans-Light.woff2') format('woff2'), url('fonts/OpenSans-Light.woff') format('woff');
+}
+@font-face {
+	font-family: 'Alegreya';
+	src: url('fonts/Alegreya-Regular.woff2') format('woff2'), url('fonts/Alegreya-Regular.woff') format('woff');
+}
+@font-face {
+	font-family: 'Alegreya SC';
+	src: url('fonts/AlegreyaSC-Regular.woff2') format('woff2'), url('fonts/AlegreyaSC-Regular.woff') format('woff');
+}
+/* *** Font Stacks ********** */
+$OpenSansLight: 'Open Sans Light', sans-serif;
+$OpenSans: 'Open Sans', 'Roboto', sans-serif;
+$Alegreya: 'Alegreya', 'Times', serif;
+$AlegreyaSC: 'Alegreya SC', serif;
+/* *** Mixins *************** */
+@mixin vert-center {
+	position: absolute;
+	top: 50%;
+	transform: perspective(1px) translateY(-50%);
+}
+/* *** Styles *************** */
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: $OpenSans;
+	font-size: 16px;
+	box-sizing: border-box;
+}
+
+body {
+	position: relative;
+	overflow-x: hidden;
+	margin: 0 auto;
+	background-color: $white-muted;
+	color: #262626;
+}
+
+#content {
+	position: relative;
+	width: 100%;
+	margin: 4rem 0 0;
+	padding: 1.6rem 1rem;
+}
+// Toggle
+
+.toggle {
+	cursor: pointer;
+}
+
+.btn {
+	display: inline-block;
+	cursor: pointer;
+	border: 0;
+	margin: 0;
+
+	&:focus {
+		outline: 0;
+	}
+}
