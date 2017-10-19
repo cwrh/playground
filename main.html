@@ -5,7 +5,7 @@
 
 	<!-- Meta Content -->
 	<meta charset="UTF-8">
-	<meta name="description" content="Such business, many success, wow">
+	<meta name="description" content="PLAY WITH ME, PLEASE">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--
 		Stylesheets
@@ -20,8 +20,8 @@
 	<!-- Topbar --
 	<header>
 		<div id="topbar">
-			<input id="tgl--drawer" data-element="drawer" name="drawer-handle" onchange="showElement(this);" type="checkbox" />
-			<label for="tgl--drawer">
+			<input id="tgl__drawer" data-element="drawer" name="drawer-handle" onchange="showElement(this);" type="checkbox" />
+			<label for="tgl__drawer">
 				<div class="btn drawer-handle">
 					<span class="hamburger-wrapper">
 	  				<span class="hamburger-icon"></span>
@@ -34,12 +34,13 @@
 		</div>
 	</header>
 -->
-	<div id="main"><!-- Main Container -->
+	<div id="main" class="container container__main"><!-- Main Container -->
 		<nav id="drawer"><!-- Nav Drawer -->
-			<ul class="nav">
+			<h2>Playground</h2>
+			<ul class="nav-list">
 				<li class="nav-item">
-					<input id="tgl--nav1" name="nav1" class="toggle" type="radio" />
-					<label for="tgl--nav1">
+					<input id="tgl__nav1" name="nav1" class="toggle" onclick="drawerClose();" type="radio" />
+					<label for="tgl__nav1">
 						<div class="flex">
 							<img class="item-avatar" src="svg/avatar-schedule.svg" alt="nav-1" />
 							<span class="item-title">Schedule</span>
@@ -47,8 +48,8 @@
 					</label>
 				</li>
 				<li class="nav-item">
-					<input id="tgl--nav2" name="nav2" class="toggle" type="radio" />
-					<label for="tgl--nav2">
+					<input id="tgl__nav2" name="nav2" class="toggle" type="radio" />
+					<label for="tgl__nav2">
 						<div class="flex">
 							<img class="item-avatar" src="svg/avatar-notes.svg" alt="nav-2" />
 							<span class="item-title">Notes</span>
@@ -56,8 +57,8 @@
 					</label>
 				</li>
 				<li class="nav-item">
-					<input id="tgl--nav3" name="nav3" class="toggle" type="radio" />
-					<label for="tgl--nav3">
+					<input id="tgl__nav3" name="nav3" class="toggle" type="radio" />
+					<label for="tgl__nav3">
 						<div class="flex">
 							<img class="item-avatar" src="svg/avatar-inventory.svg" alt="nav-3" />
 							<span class="item-title">Inventory</span>
@@ -65,8 +66,8 @@
 					</label>
 				</li>
 				<li class="nav-item">
-					<input id="tgl--nav4" name="nav4" class="toggle" type="radio" />
-					<label for="tgl--nav4">
+					<input id="tgl__nav4" name="nav4" class="toggle" type="radio" />
+					<label for="tgl__nav4">
 						<div class="flex">
 							<img class="item-avatar" src="svg/workspace2.svg" alt="nav-4" />
 							<span class="item-title">Ordering</span>
@@ -75,15 +76,24 @@
 				</li>
 			</ul>
 		</nav><!-- /drawer -->
-		<div id="content"><!-- Content Container -->
-			<div class="card"><!-- Content Card -->
-				<input id="testes" type="checkbox" name="testes">
-				<label class="card-header" for="testes">Testes</label>
-				<div class="card-body">
-					<p class="card-body-text">Suh, cuh?</p>
+		<div class="pusher"><!-- Push Container -->
+			<div class="content"><!-- Content Container -->
+				<div class="card"><!-- Content Card -->
+					<input id="testes" type="checkbox" name="testes">
+					<label class="card-header" for="testes">Testes</label>
+					<div class="card-body">
+						<input id="tgl__drawer" data-element="drawer" name="drawer-handle" onchange="showElement(this);" type="checkbox" />
+						<label for="tgl__drawer">
+							<div class="btn drawer-handle">
+								<span class="hamburger-wrapper">
+									<span class="hamburger-icon"></span>
+								</span>
+							</div>
+						</label>
+					</div>
 				</div>
-			</div>
-		</div><!-- /content -->
+			</div><!-- /content -->
+		</div><!-- /pusher -->
 	</div><!-- /main -->
 
 	<!--

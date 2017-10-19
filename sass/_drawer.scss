@@ -1,43 +1,39 @@
 /* ***** 			Drawer Variables 		***** */
 $drawer-bg: #1a2024;
 $drawer-fg: #ece5de;
-$drawer-width: 16rem;
+$drawer-width: 18.75rem;
 $bounce-curve: cubic-bezier(.9, -0.05, .05, 1.1);
 /* ***** Drawer Handle Variables 	***** */
 $icon-layer-height: 3px;
 $icon-layer-spacing: 4px;
 $icon-layer-width: 30px;
 /* ***** Top-Level Drawer Element ***** */
-#main {
-	position: relative;
-}
-
 #drawer {
 	background: $drawer-bg;
 	color: $drawer-fg;
-	position: fixed;
-	left: $drawer-width * -1;
+	position: absolute;
 	top: 0;
-	bottom: 0;
+	left: 0;
+	overflow-x: hidden;
 	width: $drawer-width;
 	min-width: $drawer-width;
 	min-height: 100%;
-	overflow-y: auto;
-	overflow-x: hidden;
+	visibility: hidden;
 	z-index: 100;
-	transition: left .4s cubic-bezier(.2, .2, .01, .99) .1s;
-	transform: translateZ(0);
+	opacity: 1;
+	transition: all .4s cubic-bezier(.2, .2, .01, .99) .1s;
+	transform: translate3d(-100%, 0, 0);
+
+	h2 {
+		font-size: 2rem;
+		padding: 1.5rem;
+		font-family: $Alegreya;
+	}
 
 	&.drawer-open {
-		left: 0;
-
-		.item-title {
-			animation-name: whiplash;
-			animation-duration: 600ms;
-			animation-iteration-count: 1;
-			animation-timing-function: $bounce-curve;
-			animation-fill-mode: none;
-		}
+		visibility: visible;
+		transform: translate3d(0, 0, 0);
+		transition: transform .4s cubic-bezier(.2, .2, .01, .99) .1s;
 	}
 }
 
@@ -45,10 +41,6 @@ $icon-layer-width: 30px;
 	position: absolute;
 	opacity: 0;
 	z-index: -1;
-}
-
-.nav {
-	padding-top: 4.3rem;
 }
 
 .nav-item {
@@ -198,19 +190,19 @@ $icon-layer-width: 30px;
 	}
 }
 
-#tgl--drawer {
+#tgl__drawer {
 	position: absolute;
 	opacity: 0;
 	z-index: -1;
 }
 
-#tgl--drawer + label {
+#tgl__drawer + label {
 	position: relative;
 	display: inline-block;
 	cursor: pointer;
 }
 
-#tgl--drawer:checked + label {
+#tgl__drawer:checked + label {
 	.hamburger-icon {
 		transform: rotate(225deg);
 		transition-delay: .12s;
@@ -238,7 +230,7 @@ $icon-layer-width: 30px;
 	80% {
 		transform: translateX(-8px);
 	}
-	
+
 	100% {
 		transform: translateX(0px);
 	}
