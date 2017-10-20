@@ -1,7 +1,7 @@
 /* ***** 			Drawer Variables 		***** */
 $drawer-bg: #1a2024;
 $drawer-fg: #ece5de;
-$drawer-width: 18.75rem;
+$drawer-width: 20rem;
 $bounce-curve: cubic-bezier(.9, -0.05, .05, 1.1);
 /* ***** Drawer Handle Variables 	***** */
 $icon-layer-height: 3px;
@@ -23,10 +23,11 @@ $icon-layer-width: 30px;
 	opacity: 1;
 	transition: all .4s cubic-bezier(.2, .2, .01, .99) .1s;
 	transform: translate3d(-100%, 0, 0);
+	box-shadow: 2px 0 5px rgba(0, 0, 0, .75);
 
 	h2 {
 		font-size: 2rem;
-		padding: 1.5rem;
+		padding: 3rem;
 		font-family: $Alegreya;
 	}
 

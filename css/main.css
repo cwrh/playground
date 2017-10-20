@@ -211,18 +211,19 @@ body {
   top: 0;
   left: 0;
   overflow-x: hidden;
-  width: 18.75rem;
-  min-width: 18.75rem;
+  width: 20rem;
+  min-width: 20rem;
   min-height: 100%;
   visibility: hidden;
   z-index: 100;
   opacity: 1;
   transition: all 0.4s cubic-bezier(0.2, 0.2, 0.01, 0.99) 0.1s;
   transform: translate3d(-100%, 0, 0);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.75);
 }
 #drawer h2 {
   font-size: 2rem;
-  padding: 1.5rem;
+  padding: 3rem;
   font-family: "Alegreya", "Times", serif;
 }
 #drawer.drawer-open {
