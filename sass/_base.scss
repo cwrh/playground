@@ -39,15 +39,11 @@ $AlegreyaSC: 'Alegreya SC', serif;
 }
 
 .container__main,
-.content,
+.container__content,
 .pusher,
 body,
 html {
 	height: 100%;
-}
-
-.content {
-	overflow-y: scroll;
 }
 
 html {
@@ -64,12 +60,30 @@ body {
 	color: #262626;
 }
 
+.collapser {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 4rem;
+	background: #bfb2ac;
+}
+
 .container {
 	position: relative;
 
 	&__main {
 		overflow: hidden;
 		perspective: 1500px;
+	}
+
+	&__content {
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+
+	&__content-inner {
+		margin: 1rem auto;
 	}
 }
 
