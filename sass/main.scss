@@ -1,53 +1,15 @@
-@import 'reset';
-@import 'base';
-@import 'topbar';
-@import 'drawer';
-
-.card {
-	position: relative;
-	width: 100%;
-	overflow: hidden;
-	max-width: 60rem;
-	margin: .5rem auto;
-	box-shadow: 1px 1px 5px rgba(0, 0, 0, .05), 2px 2px 8px 1px rgba(0, 0, 0, .1);
-	background-color: lighten($white-muted, 3%);
-
-	.card-header {
-		position: relative;
-		display: block;
-		cursor: pointer;
-		width: 100%;
-		padding: .625rem 1.4rem;
-		background-color: #B1B8BB;
-		font-family: 'Alegreya SC';
-		font-size: 2rem;
-		color: $black;
-		box-sizing: border-box;
-
-		&:hover {
-			color: mix($black, #e7e7e7, 90%);
-			background: mix(#31757e, #e7e7e7, 90%);
-		}
-	}
-
-	.card-body {
-		max-height: 0;
-		overflow: hidden;
-		transition: max-height .35s ease-in-out;
-	}
-
-	.card-body-text {
-		line-height: 1.4;
-		padding: 1rem;
-	}
-}
-
-#testes {
-	position: absolute;
-	opacity: 0;
-	z-index: -1;
-}
-
-#testes:checked ~ .card-body {
-	max-height: 10rem;
-}
+// compileExpanded, ..\css\main.css, includePath: [.\base\, .\components\, .\layout\]
+// Abstracts
+@import 'abstracts/variables';
+@import 'abstracts/mixins';
+// Base
+@import 'base/reset';
+@import 'base/base';
+@import 'base/typography';
+// Layout
+// @import 'layout/topbar';
+@import 'layout/drawer';
+@import 'layout/content';
+// Components
+@import 'components/menu-icon';
+@import 'components/collapse-card';

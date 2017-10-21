@@ -1,0 +1,99 @@
+// main: ..\main.scss
+// Icon dimension variables
+$icon-layer-height: 3px;
+$icon-layer-spacing: 4px;
+$icon-layer-width: 30px;
+// Icon wrapper element
+.hamburger-wrapper {
+	display: inline-block;
+	height: ($icon-layer-height * 3) + ($icon-layer-spacing * 2);
+	width: $icon-layer-width;
+	position: relative;
+}
+// Icon
+.hamburger-icon {
+	display: block;
+	top: 50%;
+	margin-top: $icon-layer-height / -2;
+
+	&,
+	&::after,
+	&::before {
+		width: $icon-layer-width;
+		height: $icon-layer-height;
+		border-radius: $icon-layer-height;
+		background-color: $offwhite;
+		position: absolute;
+		transition-property: transform;
+		transition-duration: .15s;
+		transition-timing-function: ease;
+	}
+
+	&::after,
+	&::before {
+		content: '';
+		display: block;
+	}
+}
+// Top-level container element
+.drawer-handle {
+	display: inline-block;
+	padding: .75rem .5rem .625rem .75rem;
+	background-color: transparent;
+	text-transform: none;
+	overflow: hidden;
+	transition-property: opacity;
+	transition-duration: .15s;
+	transition-timing-function: linear;
+	cursor: pointer;
+	&:hover {
+		opacity: .85;
+	}
+
+	.hamburger-icon {
+		transition-duration: .22s;
+		transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+		&::before {
+			top: ($icon-layer-height + $icon-layer-spacing) * -1;
+			transition: top .1s .25s ease-in, opacity .1s ease-in;
+		}
+
+		&::after {
+			bottom: ($icon-layer-height + $icon-layer-spacing) * -1;
+			transition: bottom .1s .25s ease-in, transform .22s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+		}
+	}
+}
+// Checkbox element (drawer toggle)
+#tgl__drawer {
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
+}
+
+#tgl__drawer + label {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+}
+// Drawer active (toggle checked) styles
+#tgl__drawer:checked + label {
+	.hamburger-icon {
+		transform: rotate(225deg);
+		transition-delay: .12s;
+		transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+		&::before {
+			top: 0;
+			opacity: 0;
+			transition: top .1s ease-out, opacity .1s .12s ease-out;
+		}
+
+		&::after {
+			bottom: 0;
+			transform: rotate(-90deg);
+			transition: bottom .1s ease-out, transform .22s .12s cubic-bezier(0.215, 0.61, 0.355, 1);
+		}
+	}
+}

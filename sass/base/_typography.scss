@@ -1,0 +1,18 @@
+// main: ..\main.scss
+/* *** @Font-Face Declarations *********** */
+@font-face {
+	font-family: 'Open Sans';
+	src: url('fonts/OpenSans-Regular.woff2') format('woff2'), url('fonts/OpenSans-Regular.woff') format('woff');
+}
+@font-face {
+	font-family: 'Open Sans Light';
+	src: url('fonts/OpenSans-Light.woff2') format('woff2'), url('fonts/OpenSans-Light.woff') format('woff');
+}
+@font-face {
+	font-family: 'Alegreya';
+	src: url('fonts/Alegreya-Regular.woff2') format('woff2'), url('fonts/Alegreya-Regular.woff') format('woff');
+}
+@font-face {
+	font-family: 'Alegreya SC';
+	src: url('fonts/AlegreyaSC-Regular.woff2') format('woff2'), url('fonts/AlegreyaSC-Regular.woff') format('woff');
+}

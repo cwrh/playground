@@ -1,0 +1,130 @@
+// main: ..\main.scss
+$drawer-width: 20rem;
+/* ***** Top-Level Drawer Element ***** */
+#drawer {
+	background: $blueblack-bg;
+	color: $offwhite;
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow-x: hidden;
+	width: $drawer-width;
+	min-width: $drawer-width;
+	min-height: 100%;
+	visibility: hidden;
+	z-index: 100;
+	opacity: 1;
+	transition: all .4s cubic-bezier(.2, .2, .01, .99) .1s;
+	transform: translate3d(-100%, 0, 0);
+	box-shadow: 2px 0 5px rgba(0, 0, 0, .75);
+
+	h2 {
+		font-size: 2rem;
+		padding: 3rem;
+		font-family: $Alegreya;
+	}
+
+	&.drawer-open {
+		visibility: visible;
+		transform: translate3d(0, 0, 0);
+		transition: transform .4s cubic-bezier(.2, .2, .01, .99) .1s;
+	}
+}
+
+.toggle {
+	position: absolute;
+	opacity: 0;
+	z-index: -1;
+}
+
+.nav-item {
+	line-height: 3rem;
+	font-family: $OpenSansLight;
+	transition: padding-left .25s $bounce-curve, background .4s ease-out .1s;
+	// Link wrapper for nav menu items
+	label {
+		display: block;
+		position: relative;
+		height: 3rem;
+		text-decoration: none;
+
+		&::after {
+			position: absolute;
+			right: 100%;
+			height: 2px;
+			width: 100%;
+			background: #b0381e;
+			content: '';
+			transition: right .5s cubic-bezier(.1, .5, .25, .75);
+		}
+		&:focus::after,
+		&:hover::after {
+			right: 0;
+		}
+
+		&::before {
+			position: absolute;
+			left: 100%;
+			height: 2px;
+			width: 100%;
+			background: #b0381e;
+			content: '';
+			transition: left .5s cubic-bezier(.1, .5, .25, .75);
+		}
+		&:focus::before,
+		&:hover::before {
+			left: 0;
+		}
+
+		.flex {
+			display: flex;
+			flex-flow: row nowrap;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+	.toggle:checked {
+		padding-left: 1rem;
+	}
+	&:focus {
+		outline: 0;
+	}
+	&:hover {
+		background: lighten(#1a2024, 4%);
+	}
+}
+
+.item-title {
+	flex: 1 1 auto;
+	padding-left: 1rem;
+	font-size: 1.625rem;
+	font-weight: 500;
+	color: #e4e4e4;
+}
+
+.item-avatar {
+	margin-left: 1rem;
+	height: 1.625rem;
+	width: 1.625rem;
+	flex: 0 1 1.625rem;
+}
+/*
+/*
+	.drawer-handle {
+		background: #1b2f32;
+	}
+*/
+/* ***** Item Title Slide-In Keyframes *** */
+@keyframes whiplash {
+	0% {
+		transform: translateX(0px);
+	}
+
+	80% {
+		transform: translateX(-8px);
+	}
+
+	100% {
+		transform: translateX(0px);
+	}
+}

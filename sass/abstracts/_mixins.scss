@@ -1,0 +1,7 @@
+// main: ..\main.scss
+/* *** Vertical Centering ******** */
+@mixin vert-center {
+	position: absolute;
+	top: 50%;
+	transform: perspective(1px) translateY(-50%);
+}
