@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
 	<!-- Meta Content -->
 	<meta charset="UTF-8">
 	<meta name="description" content="PLAY WITH ME, PLEASE">
@@ -10,14 +9,13 @@
 	<!-- Stylesheets & Fonts -->
 	<link href="css/main.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 </head>
 
 <body>
-	<!-- Begin Main Container -->
 	<div id="main" class="container container__main">
-		<!-- Begin Drawer Nav -->
+		<!-- Begin Main Container -->
 		<nav id="drawer">
+			<!-- Begin Drawer Nav -->
 			<h2>Playground</h2>
 			<ul class="nav-list">
 				<li class="nav-item">
@@ -60,13 +58,14 @@
 					</label>
 				</li>
 			</ul>
-		</nav><!-- /drawer -->
+		</nav>
+		<!-- /drawer -->
 		<div class="pusher">
 			<!--
-					Content within the pusher will "fall back" behind the drawer
+					Content within the pusher will "push" back behind the drawer
 					when it opens
 			-->
-			<div class="container__content">
+			<div class="container container__content">
 				<!--
 						This container allows the content-header element to emuluate
 						fixed positioning
@@ -74,7 +73,7 @@
 				<header class="content-header">
 					<span>Hey</span>
 				</header>
-				<div class="container__content-inner">
+				<div class="container container__content-inner">
 					<!-- Content Body Container -->
 					<div class="card">
 						<input id="testes" type="checkbox" name="testes" />
@@ -117,10 +116,14 @@
 							<p>H</p>
 						</div>
 					</div>
-				</div><!-- /content-inner -->
-			</div><!-- /content -->
-		</div><!-- /pusher -->
-	</div><!-- /main -->
+				</div>
+				<!-- /content-inner -->
+			</div>
+			<!-- /content -->
+		</div>
+		<!-- /pusher -->
+	</div>
+	<!-- /main -->
 
 	<script type="text/javascript" src="scripts/index.js"></script>
 
