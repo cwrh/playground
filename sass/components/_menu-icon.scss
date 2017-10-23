@@ -9,6 +9,7 @@ $icon-layer-width: 30px;
 	height: ($icon-layer-height * 3) + ($icon-layer-spacing * 2);
 	width: $icon-layer-width;
 	position: relative;
+	cursor: pointer;
 }
 // Icon
 .hamburger-icon {

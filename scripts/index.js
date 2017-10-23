@@ -1,6 +1,6 @@
 var playground = playground || {};
 var showElement = toggle => {
-  let elemID = toggle.getAttribute( 'data-element' );
+  let elemID = toggle.getAttribute( 'data-switch' );
   let elem = document.getElementById( elemID );
   let openClass = elemID + '-open';
   if ( toggle.checked === true ) {
@@ -10,6 +10,6 @@ var showElement = toggle => {
   }
 };
 var drawerClose = () => {
-  document.getElementById( 'tgl__drawer' ).checked = null;
+  document.getElementById( 'drawer-switch' ).checked = null;
   document.getElementById( 'drawer' ).classList.remove( 'drawer-open' );
 }

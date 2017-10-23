@@ -41,6 +41,7 @@ $drawer-width: 20rem;
 	line-height: 3rem;
 	font-family: $OpenSansLight;
 	transition: padding-left .25s $bounce-curve, background .4s ease-out .1s;
+	cursor: pointer;
 	// Link wrapper for nav menu items
 	label {
 		display: block;
@@ -107,24 +108,4 @@ $drawer-width: 20rem;
 	height: 1.625rem;
 	width: 1.625rem;
 	flex: 0 1 1.625rem;
-}
-/*
-/*
-	.drawer-handle {
-		background: #1b2f32;
-	}
-*/
-/* ***** Item Title Slide-In Keyframes *** */
-@keyframes whiplash {
-	0% {
-		transform: translateX(0px);
-	}
-
-	80% {
-		transform: translateX(-8px);
-	}
-
-	100% {
-		transform: translateX(0px);
-	}
 }
