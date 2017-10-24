@@ -1,38 +1,69 @@
-// Pub/Sub implementation to handle UI event firing/listening
-var Switchboard = {
-	switchList: {},
+function extend( extension, obj ) {
+  for ( var key in extension ) {
+    obj[ key ] = extension[ key ];
+  }
+}
 
-	subscribe: function(switchId, listener) {
-		// create the switchId if not yet created
-		if (!this.switchList[switchId]) this.switchList[switchId] = [];
+function ObserverList() {
+  this.observerList = [];
+}
 
-		// add the listener
-		this.switchList[switchId].push(listener);
-	},
+ObserverList.prototype = {
+  add: function ( obj ) {
+    return this.observerList.push( obj );
+  },
 
-	publish: function(switchId, status) {
-		// return if the switchId doesn't exist, or there are no listeners
-		if (!this.switchList[switchId] || this.switchList[switchId].length < 1) return;
+  count: this.length = function () {
+    return this.observerList.length;
+  },
 
-		// send the event to all listeners
-		this.switchList[switchId].forEach(function(listener) {
-			listener(status || {});
-		});
-	}
+  get: function ( index ) {
+    if ( index > -1 && index < this.observerList.length ) {
+      return this.observerList[ index ];
+    }
+  },
+
+  indexOf: function ( obj, startIndex ) {
+    var i = startIndex;
+
+    while ( i < this.observerList.length ) {
+      if ( this.observerList[ i ] === obj ) {
+        return i;
+      }
+      i++;
+    }
+
+    return -1;
+  },
+
+  removeAt: function ( index ) {
+    this.observerList.splice( index, 1 );
+  }
+}
+
+function Observer() {
+  this.update = function () {
+    console.log( 'Observer update function...' );
+  }
+}
+// Generic observer subject to be extended by the elements to be observed
+function Subject() {
+  this.observers = new ObserverList();
+}
+
+Subject.prototype = {
+  addObserver: function ( observer ) {
+    this.observers.add( observer );
+  },
+
+  removeObserver: function ( observer ) {
+    this.observers.removeAt( this.observers.indexOf( observer, 0 ) );
+  },
+
+  notify: function ( context ) {
+    var observerCount = this.observers.count();
+    for ( var i = 0; i < observerCount; i++ ) {
+      this.observers.get( i ).update( context );
+    }
+  }
 };
-// Independent on/off switches ( i.e. input[type="checkbox"] )
-var CheckboxSwitch = function(id) {
-	this.checkbox = document.getElementById(id);
-};
-CheckboxSwitch.prototype = {
-	flipSwitch: function() {
-		if (this.checkbox.checked) {
-			return this.checkbox.checked = false;
-		}
-		return this.checkbox.checked = true;
-	}
-};
-// Single-selection groups of switches ( i.e. input[type="radio"] )
-var MultiSwitch = {};
-
-var drawerSwitch = new CheckboxSwitch("drawer-switch");
