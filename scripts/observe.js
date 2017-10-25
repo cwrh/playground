@@ -4,11 +4,32 @@ function extend( extension, obj ) {
   }
 }
 
+/**
+ * ObserverList - Class
+ *
+ * @class
+ * @constructor
+ * @name ObserverList
+ * @property {arrary} observerlist
+ */
 function ObserverList() {
+
+  /**
+   * @typedef observerlist
+   * @type {array}	
+   */
   this.observerList = [];
-}
+};
 
 ObserverList.prototype = {
+
+  /**
+   * anonymous function - description
+   * @method
+   * @name ObserverList#add
+   * @param  {object} obj - HTMLElement reference being added as an observer
+   * @returns {array} ObserverList#observerlist - the
+   */
   add: function ( obj ) {
     return this.observerList.push( obj );
   },
@@ -46,7 +67,7 @@ function Observer() {
     console.log( 'Observer update function...' );
   }
 }
-// Generic observer subject to be extended by the elements to be observed
+
 function Subject() {
   this.observers = new ObserverList();
 }
