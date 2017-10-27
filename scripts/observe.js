@@ -1,35 +1,14 @@
-function extend( extension, obj ) {
+function extend( obj, extension ) {
   for ( var key in extension ) {
     obj[ key ] = extension[ key ];
   }
 }
 
-/**
- * ObserverList - Class
- *
- * @class
- * @constructor
- * @name ObserverList
- * @property {arrary} observerlist
- */
 function ObserverList() {
-
-  /**
-   * @typedef observerlist
-   * @type {array}	
-   */
   this.observerList = [];
 };
 
 ObserverList.prototype = {
-
-  /**
-   * anonymous function - description
-   * @method
-   * @name ObserverList#add
-   * @param  {object} obj - HTMLElement reference being added as an observer
-   * @returns {array} ObserverList#observerlist - the
-   */
   add: function ( obj ) {
     return this.observerList.push( obj );
   },
@@ -88,3 +67,18 @@ Subject.prototype = {
     }
   }
 };
+
+var drawerSwitch = document.getElementById( 'drawer-toggle' );
+extend( drawerSwitch, new Subject() );
+drawerSwitch.onclick = function () {
+  drawerSwitch.notify( drawerSwitch.checked );
+};
+var navMenuItems = document.querySelectorAll( '.nav-menu-item' );
+navMenuItems.forEach( item => {
+  extend( item, new Observer() );
+  item.update = function ( context ) {
+    if ( context === true ) {
+      return item.checked = false;
+    }
+  }
+} )
