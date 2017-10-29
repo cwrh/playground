@@ -37,7 +37,7 @@ $icon-layer-width: 30px;
 	}
 }
 // Top-level container element
-.drawer-handle {
+.hamburger-box {
 	display: inline-block;
 	padding: .75rem .5rem .625rem .75rem;
 	background-color: transparent;
@@ -66,20 +66,20 @@ $icon-layer-width: 30px;
 		}
 	}
 }
-// Checkbox element (drawer toggle)
-#tgl__drawer {
+// Checkbox Element (Drawer Handle)
+#drawer-handle {
 	position: absolute;
 	opacity: 0;
 	z-index: -1;
 }
 
-#tgl__drawer + label {
+#drawer-handle + label {
 	position: relative;
 	display: inline-block;
 	cursor: pointer;
 }
 // Drawer active (toggle checked) styles
-#tgl__drawer:checked + label {
+#drawer-handle:checked + label {
 	.hamburger-icon {
 		transform: rotate(225deg);
 		transition-delay: .12s;
