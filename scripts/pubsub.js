@@ -72,8 +72,20 @@ var Switchboard = {};
 
 ( function ( obj ) {
 
-}( Switchboard ) );
+  obj.
+}( elToggle ) );
 
+function RadCheck( id ) {
+
+  /* Checkbox or Radio button element (hidden/unclickable) and the
+   * corresponding label element which serves to toggle the input */
+  this.input = document.getElementById( id );
+  this.label = document.getElementById( id + '+ label' );
+
+  // This just transposes the checked status of the input to the base object
+  this.isChecked = input.checked;
+
+}
 
 // Extender Function
 function extend( obj, extension ) {
