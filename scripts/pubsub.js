@@ -38,11 +38,11 @@ var Switchboard = {};
 
     if ( !topics[ topic ] ) {
       topics[ topic ] = [];
-    }
+    };
 
     if ( typeOf func !== function ) {
       return false;
-    }
+    };
 
     var token = ( ++subUid ).toString();
     topics[ topic ].push( {
@@ -75,8 +75,28 @@ var Switchboard = {};
   obj.
 }( elToggle ) );
 
-function RadCheck( id ) {
+var uxDrawer = {};
 
+( function Drawer() {
+
+  var checkElements = {
+    'drawer-handle': [],
+    'nav-item-1': [],
+    'nav-item-2': [],
+    'nav-item-3': [],
+    'nav-item-4': [],
+  };
+
+  for ( let [ key, value ] in checkElements ) {
+    input = document.getElementById( key );
+    label = document.querySelector( '#' + key + ' + label' );
+
+    checkElements[ key ].push( {
+      input: input,
+      label: label,
+
+    } );
+  }
   /* Checkbox or Radio button element (hidden/unclickable) and the
    * corresponding label element which serves to toggle the input */
   this.input = document.getElementById( id );
@@ -85,7 +105,7 @@ function RadCheck( id ) {
   // This just transposes the checked status of the input to the base object
   this.isChecked = input.checked;
 
-}
+}( uxDrawer ) );
 
 // Extender Function
 function extend( obj, extension ) {
