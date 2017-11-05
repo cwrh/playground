@@ -1,108 +1,107 @@
-var EventManager = ( function () {
+var EventManager = (function() {
 
-  // Storage for topics that can be broadcast or listened to
-  var topics = {};
+	// Top-level object used to store all subscriber/subscription data
+	var topics = {};
 
-  // A unique tokenized identifier for individual subscribers
-  var subToken = -1;
+	// A unique tokenized identifier for individual subscribers
+	var uid = -1;
 
-  // Publish or broadcast events of interest
-  // with a specific topic name and arguments
-  // such as the data to pass along
-  function publish( topic, args ) {
+	// Publish or broadcast events of interest
+	// with a specific topic name and arguments
+	// such as the data to pass along
+	function publish(topic, data) {
+		var subscribers = topics[topic],
+			len = subscribers ? subscribers.length : 0;
 
-    if ( !topics[ topic ] ) {
-      return false;
-    }
+		if (!topics[topic]) {
+			return false;
+		}
 
-    var subscribers = topics[ topic ],
-      len = subscribers ? subscribers.length : 0;
+		if (String(topic).lastIndexOf('.') !== -1) {
+			iterateSubtopics(topic, data);
+		}
 
-    while ( len-- ) {
-      subscribers[ len ].func( topic, args );
-    }
+		while (len--) {
+			subscribers[len].func(topic, data);
+		}
 
-    return this;
-  }
+		return this;
+	}
 
-  function publishMultiple( subscriber, topic, data ) {
-    var subscribers = topics[ topic ],
-      b;
+	function iterateSubtopics(topic, data) {
+		var subTopic = String(topic),
+			position = topic.lastIndexOf('.');
 
-    if ( !topics.hasOwnProperty( receiver ) ) {
-      return;
-    }
+		// deliver the message as it is now
+		publish(topic, data);
 
-    for ( b in topics ) {
-      if ( subscribers.hasOwnProperty( b ) ) {
-        publishMultiple( subscribers[ b ], topic, data );
-      }
-    }
-  }
+		// trim the hierarchy and deliver message to each level
+		while (position !== -1) {
+			subtopic = subtopic.substr(0, position);
+			position = subtopic.lastIndexOf('.');
+			publish(subtopic, data);
+		}
+	}
 
-  function subTopics( subscriber, topic, data ) {
-    var subtopic = String( topic ),
-      position = topic.lastIndexOf( '.' );
+	// Subscribe to events of interest
+	// with a specific topic name and a
+	// callback function, to be executed
+	// when the topic/event is observed
+	function subscribe(topic, fn) {
+		var token = 'UID_' + (++uid).toString();
 
-    // deliver the message as it is now
-    publishMultiple( subscriber, topic, data );
+		if (!topics[topic]) {
+			topics[topic] = [];
+		}
 
-    // trim the hierarchy and deliver message to each level
-    while ( position !== -1 ) {
-      subtopic = subtopic.substr( 0, position );
-      position = subtopic.lastIndexOf( '.' );
-      publishMultiple( subscriber, subtopic, data );
-    }
-  }
+		if (typeOf fn !== 'function') {
+			return false;
+		}
 
-  // Subscribe to events of interest
-  // with a specific topic name and a
-  // callback function, to be executed
-  // when the topic/event is observed
-  function subscribe( topic, func ) {
+		topics[topic].push({
+			uid: token,
+			func: fn,
+		});
 
-    if ( !topics[ topic ] ) {
-      topics[ topic ] = [];
-    }
+		return {
+			uid: token,
+			func: fn,
+			subscription: topic
+		};
+	}
 
-    if ( typeOf func !== function ) {
-      return false;
-    }
+	// Unsubscribe from a specific
+	// topic, based on a tokenized reference
+	// to the subscription
+	function unsubscribe(token) {
+		for (var m in topics) {
+			if (topics[m]) {
+				for (var i = 0, j = topics[m].length; i < j; i++) {
+					if (topics[m][i].token === token) {
+						topics[m].splice(i, 1);
+						return token;
+					}
+				}
+			}
+		}
+		return this;
+	}
 
-    var token = ( ++subUid ).toString();
-    topics[ topic ].push( {
-      token: token,
-      func: func
-    } );
-    return token;
-  }
+	return {
+		publish: publish,
+		subscribe: subscribe,
+		unsubscribe: unsubscribe
+	};
+}());
 
-  // Unsubscribe from a specific
-  // topic, based on a tokenized reference
-  // to the subscription
-  function unsubscribe( token ) {
-    for ( var m in topics ) {
-      if ( topics[ m ] ) {
-        for ( var i = 0, j = topics[ m ].length; i < j; i++ ) {
-          if ( topics[ m ][ i ].token === token ) {
-            topics[ m ].splice( i, 1 );
-            return token;
-          }
-        }
-      }
-    }
-    return this;
-  }
-}() );
-
-var uiDrawer = document.getElementById( 'drawer' );
-var drawerNavItems = drawerElement.querySelectorAll( 'input[type="radio"]' );
-var drawerHandle = document.getElementById( 'drawer-handle' );
+var uiDrawer = document.getElementById('drawer');
+var drawerNavItems = drawerElement.querySelectorAll('input[type="radio"]');
+var drawerHandle = document.getElementById('drawer-handle');
 
 
-EventManager.subscribe( 'drawer.nav', drawerSubscriber );
-EventManager.subscribe( 'drawer.handle', drawerSubscriber );
+EventManager.subscribe('drawer.nav', drawerSubscriber);
+EventManager.subscribe('drawer.handle', drawerSubscriber);
 
-var drawerSubscriber = function ( topic, data ) {
+var drawerSubscriber = function(topic, data) {
 
-}
+};
